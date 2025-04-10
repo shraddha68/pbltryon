@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR-Based Virtual Try-On</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 500;
+    }
+    
+    #notification {
+        padding: 10px;
+        background-color: black;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    #notification a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    
+    #camera-container {
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 80%;
+        max-width: 900px;
+    }
+    
+    video {
+        width: 100%;
+        border: 2px solid black;
+        border-radius: 8px;
+        transform: scaleX(-1);
+    }
+    
+    #flex-box {
+        display: flex;
+        gap: 50px;
+    }
+    
+    #apparel-container {
+        margin-right: 10px;
+        text-align: center;
+        width: 60%;
+        gap: 30px;
+        padding: 10px;
+    }
+    
+    h4 {
+        font-size: 25px;
+        margin-bottom: 20px;
+        color: purple;
+    }
+    
+    h2 {
+        font-size: 35px;
+        color: indigo;
+    }
+    
+    .section {
+        position: relative;
+        width: 300px;
+        overflow: hidden;
+        border: 2px solid black;
+        box-shadow: 3px 3px 3px black;
+        padding-top: 10px;
+        border-radius: 10px;
+    }
+    
+    .carousel-wrapper {
+        position: relative;
+        width: 300px;
+        overflow: hidden;
+    }
+    
+    .inner-container {
+        display: flex;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+        overflow: hidden;
+    }
+    
+    .inner-container img {
+        width: 300px;
+        height: 250px;
+        flex-shrink: 0;
+    }
+
+    #all-sections {
+        display: flex; 
+        justify-content: space-around;
+        gap: 30px; 
+        padding: 10px;
+    }
+
+    
+    button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 2;
+    }
+    
+    .prev {
+        left: 10px;
+    }
+    
+    .next {
+        right: 10px;
+    }
+    
+    button:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+</style>    
+</head>
+<body>
+        <div id="notification">
+            <img src="logo.jpg">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    
+        <div id="flex-box">
+            <div id="camera-container">
+                <video id="camera-feed" autoplay playsinline></video>
+            </div>
+    
+            <div id="apparel-container">
+                <div> 
+                    <h2> Your Wardrobe </h2>
+                </div>
+    
+                <div id="all-sections">
+                    <!-- Clothes Section -->
+                    <div class="section">
+                        <h4> Clothes Section </h4>
+                        <div class="carousel-wrapper">
+                            <button class="prev">❮</button>
+                            <div class="inner-container" id="carousel1">
+                                <img src="pavbhaji.png">
+                                <img src="pavbhaji.png">
+                                <img src="pavbhaji.png">
+                            </div>
+                            <button class="next">❯</button>
+                        </div>
+                    </div>
+    
+                    <!-- Accessories Section -->
+                    <div class="section">
+                        <h4> Accessories Section </h4>
+                        <div class="carousel-wrapper">
+                            <button class="prev">❮</button>
+                            <div class="inner-container" id="carousel2">
+                                <img src="accomodation.jpg">
+                                <img src="accomodation.jpg">
+                                <img src="accomodation.jpg">
+                            </div>
+                            <button class="next">❯</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // Enable camera feed
+        const video = document.getElementById('camera-feed');
+    
+        async function enableCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Camera access denied", err);
+            }
+        }
+    
+        // Call functions on page load
+        window.onload = function () {
+            enableCamera();
+            initializeCarousel('carousel1');
+            initializeCarousel('carousel2');
+        };
+    
+        function initializeCarousel(carouselId) {
+            let currentIndex = 0;
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+    
+            const innerContainer = carousel;
+            const images = innerContainer.querySelectorAll('img');
+            const totalImages = images.length;
+    
+            const prevButton = carousel.parentElement.querySelector('.prev');
+            const nextButton = carousel.parentElement.querySelector('.next');
+    
+            function updateCarousel() {
+                const offset = -currentIndex * 300; // Adjust width of images
+                innerContainer.style.transform = `translateX(${offset}px)`;
+            }
+    
+            nextButton.addEventListener("click", () => {
+                if (currentIndex < totalImages - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Loop back to first image
+                }
+                updateCarousel();
+            });
+    
+            prevButton.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = totalImages - 1; // Loop back to last image
+                }
+                updateCarousel();
+            });
+    
+            // Ensure proper styling
+            innerContainer.style.display = "flex";
+            innerContainer.style.transition = "transform 0.5s ease-in-out";
+            innerContainer.style.width = `${totalImages * 300}px`; // Adjust based on image width
+        }
+    </script>
+    
+</body>
+
+</html>

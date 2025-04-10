@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Fredoka:wght@300..700&family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <title>Virtual Try-On</title>
+  </head>
+  <body>
+    <div class="desktop">
+      <div class="navbar">
+        <div class="ellipse"></div>
+        <div class="text-wrapper"><a href="{{ url_for('home') }}">Home</a></div>
+        <div class="text-wrapper-2"><a href="#">Contact Us</a></div>
+        <div class="text-wrapper-3"><a href="#">About Us</a></div>
+      </div>
+
+      <img class="frame" src="{{ url_for('static', filename='Frame 1.png') }}" />
+
+      <div class="frame-2">
+        <a href="{{ url_for('static', filename='clothes.html') }}">
+          <div class="overlap">
+            <img src="{{ url_for('static', filename='Rectangle 1.png') }}">
+            <div class="text-wrapper-5">TRY CLOTHES</div>
+          </div>
+        </a>
+
+        <a href="{{ url_for('static', filename='accessories.html') }}">
+          <div class="overlap-group">
+            <img src="{{ url_for('static', filename='Rectangle 3.png') }}">
+            <div class="text-wrapper-6">TRY ACCESSORIES</div>
+          </div>
+        </a>
+
+        <a href="{{ url_for('static', filename='shoes.html') }}">
+          <div class="div-wrapper">
+            <img src="{{ url_for('static', filename='Rectangle 2.png') }}">
+            <div class="text-wrapper-7">TRY SHOES</div>
+          </div>
+        </a>
+
+        <div class="rectangle"></div>
+      </div>
+
+      <div class="frame-3">
+        <p class="p">READY TO STEP INTO THE VIRTUAL TRIAL ROOM?</p>
+        <a href="{{ url_for('camera_page') }}" target="_blank" rel="noopener noreferrer">
+          <div class="overlap-group-wrapper">
+            <div class="overlap-group-2">
+              <div class="text-wrapper-8">Open Camera</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

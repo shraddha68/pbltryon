@@ -1,0 +1,155 @@
+.desktop {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 1456px;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  .desktop .navbar {
+    position: relative;
+    width: 100%;
+    height: 100px;
+  }
+
+  .desktop .navbar .text-wrapper, .text-wrapper-2, .text-wrapper-3 a{
+    font-family: "Holtwood One SC", serif;
+    font-weight: 400;
+    color: #000957;
+    font-size: 24px;
+  }
+  
+  .desktop .ellipse {
+    position: absolute;
+    width: 92px;
+    height: 90px;
+    top: 10px;
+    left: 12px;
+    background-color: #000957;
+    border-radius: 46px / 45px;
+  }
+  
+  .desktop .text-wrapper {
+    position: absolute;
+    width: 100px;
+    top: 34px;
+    left: 148px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .desktop .text-wrapper-2 {
+    left: 292px;
+    position: absolute;
+    width: 200px;
+    top: 34px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .desktop .text-wrapper-3 {
+    left: 500px;
+    position: absolute;
+    width: 200px;
+    top: 34px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .desktop .frame {
+    width: 1000px;
+    height: 650px;
+    top: 118px;
+    background-color: #ffffff;
+    position: absolute;
+  }
+
+  #video-feed{
+    width: 1000px;
+  }
+  
+  .desktop .frame-2 {
+    width: 405px;
+    height: 1006px;
+    top: 120px;
+    left: 1027px;
+    border: 3px solid;
+    position: absolute;
+    border-color: #000000;
+  }
+  
+  .desktop .text-wrapper-6 {
+    position: absolute;
+    width: 402px;
+    top: 14px;
+    left: 0;
+    font-family: "Fredoka", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 99.6;
+    color: #670808;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .desktop .group {
+    top: 142px;
+    left: 20px;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .desktop .overlap-group {
+    cursor: pointer;
+    position: relative;
+    width: 154px;
+    height: 154px;
+    top: -2px;
+    left: -2px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid;
+    border-color: #00000075;
+  }
+  
+  .desktop .img {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: 5px;
+    left: 5px;
+    object-fit: cover;
+  }
+  
+  .desktop .overlap-wrapper {
+    top: 142px;
+    left: 229px;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .desktop .overlap-group-wrapper {
+    top: 324px;
+    left: 20px;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .desktop .group-2 {
+    top: 324px;
+    left: 229px;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+  }
+  
